@@ -9,14 +9,12 @@ const PoliticiansProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(8);
   const [total, setTotal] = useState(null);
-  const [filters, setFilters] = useState({ name: "" });
-  const [session, setSession] = useState("115");
-  const [chamber, setChamber] = useState("senate");
+  const [filters, setFilters] = useState({
+    name: "",
+    session: "116",
+    chamber: "senate",
+  });
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const session = 115; // 115th congressional session
-  //   const chamber = 'senate'; // or 'house'
 
   useEffect(() => {
     async function loadPoliticianData() {
@@ -26,7 +24,7 @@ const PoliticiansProvider = ({ children }) => {
 
       try {
         const response = await api.get(
-          `congress/v1/${session}/${chamber}/members.json`
+          `congress/v1/${filters.session}/${filters.chamber}/members.json`
         );
 
         const { results } = response.data;
@@ -58,7 +56,7 @@ const PoliticiansProvider = ({ children }) => {
     }
 
     loadPoliticianData();
-  }, [filters, currentPage, rowsPerPage, session, chamber]);
+  }, [filters, currentPage, rowsPerPage]);
 
   return (
     <PoliticiansContext.Provider
@@ -69,10 +67,6 @@ const PoliticiansProvider = ({ children }) => {
         setCurrentPage,
         rowsPerPage,
         setRowsPerPage,
-        session,
-        setSession,
-        chamber,
-        setChamber,
         filters,
         setFilters,
         loading,

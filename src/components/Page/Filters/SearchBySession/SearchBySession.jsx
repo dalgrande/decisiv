@@ -1,24 +1,24 @@
-import classes from "./SearchByName.module.css";
+import classes from "./SearchBySession.module.css";
 import React from "react";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-export default function SearchByName() {
+export default function SearchBySession() {
   const { filters, setFilters, setLoading } = usePoliticians();
 
   const handleFilterByNameChange = (e) => {
+    e.preventDefault();
     setLoading(true);
     setFilters((prevState) => {
-      return { ...prevState, name: e.target.value };
+      return { ...prevState, session: e.target.value };
     });
   };
-
   return (
     <div className={classes.searchField}>
-      Search by Name:{" "}
+      Search by Session:{" "}
       <input
         type="text"
         placeholder=""
-        value={filters.name}
+        value={filters.session}
         onChange={handleFilterByNameChange}
       />
     </div>

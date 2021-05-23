@@ -3,11 +3,13 @@ import "./ChamberSelect.modules.css";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
 export default function ChamberSelect() {
-  const { setLoading, setChamber } = usePoliticians();
+  const { setLoading, setFilters } = usePoliticians();
 
   const handleFilterByChamberChange = (e) => {
     setLoading(true);
-    setChamber(e.target.value);
+    setFilters((prevState) => {
+      return { ...prevState, chamber: e.target.value };
+    });
   };
 
   return (
