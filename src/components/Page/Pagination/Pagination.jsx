@@ -8,12 +8,11 @@ export default function Pagination() {
     usePoliticians();
 
   const pageNumbers = [];
-
   for (let i = 1; i <= Math.ceil(total / rowsPerPage); i++) {
     pageNumbers.push(i);
   }
+
   const handleChangePage = (page) => {
-    setLoading(true);
     setCurrentPage(page);
   };
 
