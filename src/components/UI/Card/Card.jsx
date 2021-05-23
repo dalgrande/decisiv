@@ -16,7 +16,7 @@ const Card = (props) => {
   return (
     <div className={classes.Card}>
       <p>
-        {first_name} {last_name}
+        {last_name}, {first_name}
       </p>
 
       <p>Gender: {gender}</p>
