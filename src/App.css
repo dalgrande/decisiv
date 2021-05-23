@@ -21,3 +21,8 @@
 .App-intro {
   font-size: large;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}

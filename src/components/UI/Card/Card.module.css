@@ -1,0 +1,10 @@
+.Card {
+  height: 12rem;
+  width: 20rem;
+  border: 1px solid black;
+  margin: 0.3rem;
+}
+
+p {
+  font-size: 11px;
+}
