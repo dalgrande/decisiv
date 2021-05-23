@@ -6,7 +6,7 @@ import Loading from "../../UI/Loading/Loading";
 import EmptyResults from "../../UI/EmptyResults/EmptyResults";
 
 const CardList = () => {
-  const { total, loading, politicianData } = usePoliticians();
+  const { loading, politicianData } = usePoliticians();
 
   if (loading) {
     return (
