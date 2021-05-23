@@ -41,7 +41,7 @@ const PoliticiansProvider = ({ children }) => {
               item.first_name === `${filters.first_name}`
           );
           setTotal(filteredByName.length);
-          setPoliticianData(filteredByName);
+          setPoliticianData(filteredByName.slice(indexofFirst, indexofLast));
           setLoading(false);
         }
         if (filters.party !== "") {
@@ -50,10 +50,12 @@ const PoliticiansProvider = ({ children }) => {
           );
           setTotal(filteredByParty.length);
           setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
-        } else {
-          setPoliticianData(pageData);
           setLoading(false);
+        } else if (filters.party === "" && filters.first_name === "") {
+          setPoliticianData(pageData);
         }
+
+        setLoading(false);
       } catch (error) {
         setTotal(0);
         setPoliticianData([]);
