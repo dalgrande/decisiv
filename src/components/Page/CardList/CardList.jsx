@@ -8,7 +8,7 @@ import EmptyResults from "../../UI/EmptyResults/EmptyResults";
 const CardList = () => {
   const { total, loading, politicianData } = usePoliticians();
 
-  if (total <= 0 && !loading) {
+  if (loading) {
     return (
       <div>
         <Loading />
@@ -19,14 +19,9 @@ const CardList = () => {
   return (
     <div key={Math.random()} className={classes.list}>
       {politicianData
-        ? politicianData.map((politician) => {
-            return (
-              <Card
-                key={politician.id + Math.random()}
-                politician={politician}
-              />
-            );
-          })
+        ? politicianData.map((politician) => (
+            <Card key={politician.id + Math.random()} politician={politician} />
+          ))
         : null}
     </div>
   );

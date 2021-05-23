@@ -6,9 +6,10 @@ export default function SearchByName() {
   const { filters, setFilters, setLoading } = usePoliticians();
 
   const handleFilterByNameChange = (e) => {
+    e.preventDefault();
     setLoading(true);
     setFilters((prevState) => {
-      return { ...prevState, name: e.target.value };
+      return { ...prevState, first_name: e.target.value };
     });
   };
 
@@ -18,7 +19,7 @@ export default function SearchByName() {
       <input
         type="text"
         placeholder=""
-        value={filters.name}
+        value={filters.first_name}
         onChange={handleFilterByNameChange}
       />
     </div>

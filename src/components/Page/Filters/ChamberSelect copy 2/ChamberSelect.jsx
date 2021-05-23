@@ -6,7 +6,6 @@ export default function ChamberSelect() {
   const { setLoading, setFilters } = usePoliticians();
 
   const handleFilterByChamberChange = (e) => {
-    e.preventDefault();
     setLoading(true);
     setFilters((prevState) => {
       return { ...prevState, chamber: e.target.value };
