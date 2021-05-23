@@ -4,7 +4,8 @@ import CardsPerPage from "./CardsPerPage/CardsPerPage";
 import "./Pagination.module.css";
 
 export default function Pagination() {
-  const { total, rowsPerPage, setCurrentPage, setLoading } = usePoliticians();
+  const { total, rowsPerPage, setCurrentPage, currentPage, setLoading } =
+    usePoliticians();
 
   const pageNumbers = [];
 
@@ -12,7 +13,6 @@ export default function Pagination() {
     pageNumbers.push(i);
   }
   const handleChangePage = (page) => {
-    e.preventDefault();
     setLoading(true);
     setCurrentPage(page);
   };
@@ -22,8 +22,8 @@ export default function Pagination() {
       <nav>
         <ul>
           {pageNumbers.map((page) => (
-            <li key={page}>
-              <a onClick={() => handleChangePage(page)}>{page}</a>
+            <li key={page} onClick={() => handleChangePage(page)}>
+              {page === currentPage ? <p>{page}</p> : page}
             </li>
           ))}
         </ul>

@@ -17,7 +17,7 @@ export default function PartySelect() {
     <div>
       <label htmlFor="cards">Select the Party:</label>
       <select onChange={handleFilterByPartyChange} name="cards" id="cards">
-        <option value="" />
+        <option value="">All</option>
         <option value="D">Democrats</option>
         <option value="R">Republicans</option>
       </select>
