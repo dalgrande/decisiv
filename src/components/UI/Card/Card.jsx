@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import classes from "./Card.module.css";
 import DetailsCard from "../../UI/DetailsCard/DetaisCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFemale, faMale } from "@fortawesome/free-solid-svg-icons";
 
 const Card = (props) => {
   const {
@@ -27,18 +29,24 @@ const Card = (props) => {
       <DetailsCard api_uri={api_uri} onToggle={handleShowDetails} />
     </>
   ) : (
-    <div onClick={handleShowDetails} className={classes.Card}>
-      <p>
-        {last_name}, {first_name}
-      </p>
-      <p>Gender: {gender}</p>
-      <p>Party: {party}</p>
-      <p>State: {state}</p>
-      <p>Next Election: {next_election}</p>
-      <p>Twitter: {twitter_account}</p>
-      <p>Facebook: {facebook_account}</p>
-      <p>Youtube: {youtube_account}</p>
-    </div>
+    <>
+      <div onClick={handleShowDetails} className={classes.card}>
+        <p>
+          {last_name}, {first_name}
+        </p>
+        {gender === "F" ? (
+          <FontAwesomeIcon icon={faFemale} className={classes.icon} />
+        ) : (
+          <FontAwesomeIcon icon={faMale} className={classes.icon} />
+        )}
+        <p>Party: {party}</p>
+        <p>State: {state}</p>
+        <p>Next Election: {next_election}</p>
+        <p>Twitter: {twitter_account}</p>
+        <p>Facebook: {facebook_account}</p>
+        <p>Youtube: {youtube_account}</p>
+      </div>
+    </>
   );
 };
 

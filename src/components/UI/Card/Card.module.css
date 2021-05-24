@@ -1,4 +1,4 @@
-.Card {
+.card {
   height: 12rem;
   width: 20rem;
   border: 1px solid black;
@@ -8,4 +8,10 @@
 
 p {
   font-size: 11px;
+}
+
+.icon {
+  height: 16px;
+
+  color: rgb(36, 170, 58);
 }
