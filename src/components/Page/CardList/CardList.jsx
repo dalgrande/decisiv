@@ -6,9 +6,9 @@ import Loading from "../../UI/Loading/Loading";
 import EmptyResults from "../../UI/EmptyResults/EmptyResults";
 
 const CardList = () => {
-  const { loading, politicianData } = usePoliticians();
+  const { politicianData, total } = usePoliticians();
 
-  if (loading) {
+  if (!politicianData) {
     return (
       <div>
         <Loading />
@@ -18,11 +18,16 @@ const CardList = () => {
 
   return (
     <div key={Math.random()} className={classes.list}>
-      {politicianData
-        ? politicianData.map((politician) => (
-            <Card key={politician.id + Math.random()} politician={politician} />
-          ))
-        : null}
+      {total <= 0 ? (
+        <div className={classes.noresults}>
+          <EmptyResults />
+          <Loading />
+        </div>
+      ) : (
+        politicianData.map((politician) => (
+          <Card key={politician.id + Math.random()} politician={politician} />
+        ))
+      )}
     </div>
   );
 };

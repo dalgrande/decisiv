@@ -9,17 +9,17 @@ export default function SearchByName() {
     e.preventDefault();
     setLoading(true);
     setFilters((prevState) => {
-      return { ...prevState, first_name: e.target.value };
+      return { ...prevState, firstName: e.target.value };
     });
   };
 
   return (
     <div className={classes.searchField}>
-      Search by Name:{" "}
+      Search by first name:{" "}
       <input
         type="text"
         placeholder=""
-        value={filters.first_name}
+        value={filters.firstName}
         onChange={handleFilterByNameChange}
       />
     </div>

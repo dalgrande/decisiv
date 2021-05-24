@@ -10,7 +10,7 @@ const PoliticiansProvider = ({ children }) => {
   const [rowsPerPage, setRowsPerPage] = useState(8);
   const [total, setTotal] = useState(null);
   const [filters, setFilters] = useState({
-    first_name: "",
+    firstName: "",
     session: "116",
     chamber: "senate",
     party: "",
@@ -34,11 +34,11 @@ const PoliticiansProvider = ({ children }) => {
         const indexofFirst = indexofLast - rowsPerPage;
         const pageData = results[0].members?.slice(indexofFirst, indexofLast);
 
-        if (filters.first_name !== "") {
+        if (filters.firstName !== "") {
           const filteredByName = results[0].members.filter(
             (item) =>
-              item.first_name.toLowerCase() === `${filters.first_name}` ||
-              item.first_name === `${filters.first_name}`
+              item.first_name.toLowerCase().includes(`${filters.firstName}`) ||
+              item.first_name.includes(`${filters.firstName}`)
           );
           setTotal(filteredByName.length);
           setPoliticianData(filteredByName.slice(indexofFirst, indexofLast));
@@ -51,7 +51,7 @@ const PoliticiansProvider = ({ children }) => {
           setTotal(filteredByParty.length);
           setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
           setLoading(false);
-        } else if (filters.party === "" && filters.first_name === "") {
+        } else if (filters.party === "" && filters.firstName === "") {
           setPoliticianData(pageData);
         }
 
