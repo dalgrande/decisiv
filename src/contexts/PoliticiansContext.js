@@ -43,8 +43,7 @@ const PoliticiansProvider = ({ children }) => {
           setTotal(filteredByName.length);
           setPoliticianData(filteredByName.slice(indexofFirst, indexofLast));
           setLoading(false);
-        }
-        if (filters.party !== "") {
+        } else if (filters.party !== "") {
           const filteredByParty = results[0].members.filter(
             (item) => item.party === `${filters.party}`
           );
