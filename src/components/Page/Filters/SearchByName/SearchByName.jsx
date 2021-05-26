@@ -3,11 +3,12 @@ import React from "react";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
 export default function SearchByName() {
-  const { filters, setFilters, setLoading } = usePoliticians();
+  const { setCurrentPage, filters, setFilters, setLoading } = usePoliticians();
 
   const handleFilterByNameChange = (e) => {
     e.preventDefault();
     setLoading(true);
+    setCurrentPage(1);
     setFilters((prevState) => {
       return { ...prevState, firstName: e.target.value };
     });

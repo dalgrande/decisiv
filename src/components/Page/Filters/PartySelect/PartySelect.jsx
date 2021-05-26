@@ -3,11 +3,12 @@ import "./PartySelect.modules.css";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
 export default function PartySelect() {
-  const { setLoading, setFilters } = usePoliticians();
+  const { setCurrentPage, setLoading, setFilters } = usePoliticians();
 
   const handleFilterByPartyChange = (e) => {
     e.preventDefault();
     setLoading(true);
+    setCurrentPage(1);
     setFilters((prevState) => {
       return { ...prevState, party: e.target.value };
     });

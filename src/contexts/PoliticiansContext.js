@@ -26,15 +26,12 @@ const PoliticiansProvider = ({ children }) => {
   for (let i = 1; i <= Math.ceil(total / rowsPerPage); i++) {
     pageNumbers.push(i);
   }
-  console.log(pageNumbers.length);
 
   function handleFilterByParty() {
     const filteredByParty = responseData.filter(
       (item) => item.party === `${filters.party}`
     );
     setTotal(filteredByParty.length);
-    const newPageNumber = Math.ceil(total / rowsPerPage);
-    console.log(newPageNumber);
     setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
     setLoading(false);
   }

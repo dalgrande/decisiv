@@ -3,7 +3,7 @@ import "./App.css";
 import PoliticiansProvider from "./contexts/PoliticiansContext";
 import Header from "./components/Page/Header/Header";
 import CardList from "./components/Page/CardList/CardList";
-import Pagination from "./components/Page/Pagination/Pagination";
+import PageSelector from "./components/Page/PageSelector/PageSelector";
 import Filters from "./components/Page/Filters/Filters";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <PoliticiansProvider>
           <Filters />
           <CardList />
-          <Pagination />
+          <PageSelector />
         </PoliticiansProvider>
       </section>
     </div>
