@@ -4,12 +4,7 @@ import CardsPerPage from "./CardsPerPage/CardsPerPage";
 import "./Pagination.module.css";
 
 export default function Pagination() {
-  const { total, rowsPerPage, setCurrentPage, currentPage } = usePoliticians();
-
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(total / rowsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const { pageNumbers, setCurrentPage, currentPage } = usePoliticians();
 
   const handleChangePage = (page) => {
     setCurrentPage(page);

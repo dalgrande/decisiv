@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../UI/Card/Card";
 import usePoliticians from "../../../hooks/usePoliticians";
 import classes from "./CardList.module.css";
