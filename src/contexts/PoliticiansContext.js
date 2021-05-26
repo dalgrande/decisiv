@@ -72,7 +72,8 @@ const PoliticiansProvider = ({ children }) => {
         setResponseData(results[0].members);
         setTotal(results[0].num_results);
         setLoading(false);
-        setPoliticianData(responseData.slice(indexofFirst, indexofLast));
+        setPoliticianData(results[0].members.slice(indexofFirst, indexofLast));
+        setCurrentPage(1);
       } catch (error) {
         setTotal(0);
         setPoliticianData([]);
