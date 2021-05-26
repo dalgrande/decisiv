@@ -4,13 +4,18 @@ import classes from "./EmptyResults.module.css";
 
 export default function EmptyResults() {
   const { filters } = usePoliticians();
+
   return (
     <div className={classes.view}>
-      <p className={classes.searchHint}>
-        Your search - <span>{filters.firstName}</span> - did not match any
-        documents.
-      </p>
-      <ul>
+      <div className={classes.hint}>
+        <h3>
+          Your search for the name - <span>{filters.firstName}</span> - did not
+          match any Politician. In the{" "}
+          {filters.chamber === "senate" ? "Senate" : "House"}, on the{" "}
+          {filters.session} session.
+        </h3>
+      </div>
+      <div>
         <li>
           <p>Make sure that all words are spelled correctly.</p>
         </li>
@@ -20,7 +25,7 @@ export default function EmptyResults() {
         <li>
           <p>Try more general keywords.</p>{" "}
         </li>
-      </ul>
+      </div>
     </div>
   );
 }
