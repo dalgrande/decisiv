@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Card.module.css";
-import DetailsCard from "../../UI/DetailsCard/DetaisCard";
+import DetailsCard from "../DetailsCard/DetailsCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFemale, faMale } from "@fortawesome/free-solid-svg-icons";
 
