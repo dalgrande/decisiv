@@ -2,7 +2,7 @@ import React from "react";
 import "./PartySelect.modules.css";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-export default function PartySelect() {
+function PartySelect() {
   const { setCurrentPage, setLoading, setFilters } = usePoliticians();
 
   const handleFilterByPartyChange = (e) => {
@@ -25,3 +25,5 @@ export default function PartySelect() {
     </div>
   );
 }
+
+export default React.memo(PartySelect);

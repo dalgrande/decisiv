@@ -2,7 +2,7 @@ import classes from "./SearchByName.module.css";
 import React from "react";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-export default function SearchByName() {
+function SearchByName() {
   const { setCurrentPage, filters, setFilters, setLoading } = usePoliticians();
 
   const handleFilterByNameChange = (e) => {
@@ -26,3 +26,4 @@ export default function SearchByName() {
     </div>
   );
 }
+export default React.memo(SearchByName);

@@ -1,7 +1,7 @@
 import React from "react";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-export default function CardsPerPage() {
+function CardsPerPage() {
   const { setRowsPerPage } = usePoliticians();
 
   const handleCardsPerPageSelection = (e) => {
@@ -21,3 +21,4 @@ export default function CardsPerPage() {
     </div>
   );
 }
+export default React.memo(CardsPerPage);

@@ -2,7 +2,7 @@ import classes from "./SearchBySession.module.css";
 import React from "react";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-export default function SearchBySession() {
+function SearchBySession() {
   const { setCurrentPage, filters, setFilters, setLoading } = usePoliticians();
 
   const handleFilterByNameChange = (e) => {
@@ -25,3 +25,5 @@ export default function SearchBySession() {
     </div>
   );
 }
+
+export default React.memo(SearchBySession);
