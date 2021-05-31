@@ -1,34 +1,34 @@
 import React from "react";
-import "./PartySelect.modules.css";
+import "./SearchByGender.modules.css";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-function PartySelect() {
+function SearchByGender() {
   const { setCurrentPage, setLoading, setFilters, filters } = usePoliticians();
 
-  const handleFilterByPartyChange = (e) => {
+  const handleFilterByGender = (e) => {
     e.preventDefault();
     setLoading(true);
     setCurrentPage(1);
     setFilters((prevState) => {
-      return { ...prevState, party: e.target.value };
+      return { ...prevState, gender: e.target.value };
     });
   };
 
   return (
     <div>
-      <label htmlFor="cards">Select the Party:</label>
+      <label htmlFor="cards">Gender:</label>
       <select
-        value={filters.party}
-        onChange={handleFilterByPartyChange}
+        value={filters.gender}
+        onChange={handleFilterByGender}
         name="cards"
         id="cards"
       >
         <option value="">All</option>
-        <option value="D">Democrats</option>
-        <option value="R">Republicans</option>
+        <option value="F">Woman</option>
+        <option value="M">Men</option>
       </select>
     </div>
   );
 }
 
-export default React.memo(PartySelect);
+export default React.memo(SearchByGender);

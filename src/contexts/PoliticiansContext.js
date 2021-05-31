@@ -27,6 +27,15 @@ const PoliticiansProvider = ({ children }) => {
     pageNumbers.push(i);
   }
 
+  function handleFilterByGender() {
+    const filteredByGender = responseData.filter(
+      (item) => item.gender === `${filters.gender}`
+    );
+    setTotal(filteredByGender.length);
+    setPoliticianData(filteredByGender.slice(indexofFirst, indexofLast));
+    setLoading(false);
+  }
+
   function handleFilterByParty() {
     const filteredByParty = responseData.filter(
       (item) => item.party === `${filters.party}`
@@ -34,6 +43,16 @@ const PoliticiansProvider = ({ children }) => {
     setTotal(filteredByParty.length);
     setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
     setLoading(false);
+    if (filters.gender !== "") {
+      setPoliticianData((prevState) => {
+        let prev = prevState.filter(
+          (item) => item.gender === `${filters.gender}`
+        );
+        setTotal(prev.length);
+        return prev;
+      });
+      setLoading(false);
+    }
   }
 
   function handleFilteredByName() {
@@ -52,6 +71,18 @@ const PoliticiansProvider = ({ children }) => {
         let prev = prevState.filter(
           (item) => item.party === `${filters.party}`
         );
+        setTotal(prev.length);
+        return prev;
+      });
+      setLoading(false);
+    }
+
+    if (filters.gender !== "") {
+      setPoliticianData((prevState) => {
+        let prev = prevState.filter(
+          (item) => item.gender === `${filters.gender}`
+        );
+        setTotal(prev.length);
         return prev;
       });
       setLoading(false);
@@ -86,17 +117,25 @@ const PoliticiansProvider = ({ children }) => {
     function applyFilters() {
       filters.firstName !== "" ? handleFilteredByName() : null;
 
+      filters.gender !== "" && filters.firstName === ""
+        ? handleFilterByGender()
+        : null;
+
       filters.party !== "" && filters.firstName === ""
         ? handleFilterByParty()
         : null;
 
-      if (filters.party === "" && filters.firstName === "") {
+      if (
+        filters.party === "" &&
+        filters.firstName === "" &&
+        filters.gender === ""
+      ) {
         setTotal(responseData?.length);
         setPoliticianData(responseData?.slice(indexofFirst, indexofLast));
       }
     }
     applyFilters();
-  }, [filters.party, filters.firstName, total, currentPage]);
+  }, [filters.party, filters.firstName, filters.gender, total, currentPage]);
 
   return (
     <PoliticiansContext.Provider
