@@ -48,7 +48,7 @@ const PoliticiansProvider = ({ children }) => {
         let prev = prevState.filter(
           (item) => item.gender === `${filters.gender}`
         );
-        setTotal(prev.length);
+
         return prev;
       });
       setLoading(false);
