@@ -44,11 +44,14 @@ const PoliticiansProvider = ({ children }) => {
     setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
     setLoading(false);
     if (filters.gender !== "") {
-      setPoliticianData((prevState) => {
-        let prev = prevState.filter(
-          (item) => item.gender === `${filters.gender}`
+      setPoliticianData(() => {
+        let prev = responseData.filter(
+          (item) =>
+            item.gender === `${filters.gender}` &&
+            item.party === `${filters.party}`
         );
-
+        setTotal(prev.length);
+        setPoliticianData(prev.slice(indexofFirst, indexofLast));
         return prev;
       });
       setLoading(false);
