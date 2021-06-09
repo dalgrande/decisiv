@@ -5,6 +5,7 @@ import Header from "./components/Page/Header/Header";
 import CardList from "./components/Page/CardList/CardList";
 import PageSelector from "./components/Page/PageSelector/PageSelector";
 import Filters from "./components/Page/Filters/Filters";
+import Router from "./router/Router";
 
 function App() {
   return (
@@ -12,9 +13,11 @@ function App() {
       <Header />
       <section className="container">
         <PoliticiansProvider>
-          <Filters />
-          <CardList />
-          <PageSelector />
+          <Router>
+            <Filters />
+            <CardList />
+            <PageSelector />
+          </Router>
         </PoliticiansProvider>
       </section>
     </div>

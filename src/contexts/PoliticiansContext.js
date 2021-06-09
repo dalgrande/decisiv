@@ -28,33 +28,37 @@ const PoliticiansProvider = ({ children }) => {
   }
 
   function handleFilterByGender() {
-    const filteredByGender = responseData.filter(
-      (item) => item.gender === `${filters.gender}`
-    );
-    setTotal(filteredByGender.length);
-    setPoliticianData(filteredByGender.slice(indexofFirst, indexofLast));
-    setLoading(false);
+    if (responseData) {
+      const filteredByGender = responseData.filter(
+        (item) => item.gender === `${filters.gender}`
+      );
+      setTotal(filteredByGender.length);
+      setPoliticianData(filteredByGender.slice(indexofFirst, indexofLast));
+      setLoading(false);
+    }
   }
 
   function handleFilterByParty() {
-    const filteredByParty = responseData.filter(
-      (item) => item.party === `${filters.party}`
-    );
-    setTotal(filteredByParty.length);
-    setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
-    setLoading(false);
-    if (filters.gender !== "") {
-      setPoliticianData(() => {
-        let prev = responseData.filter(
-          (item) =>
-            item.gender === `${filters.gender}` &&
-            item.party === `${filters.party}`
-        );
-        setTotal(prev.length);
-        setPoliticianData(prev.slice(indexofFirst, indexofLast));
-        return prev;
-      });
+    if (responseData) {
+      const filteredByParty = responseData.filter(
+        (item) => item.party === `${filters.party}`
+      );
+      setTotal(filteredByParty.length);
+      setPoliticianData(filteredByParty.slice(indexofFirst, indexofLast));
       setLoading(false);
+      if (filters.gender !== "") {
+        setPoliticianData(() => {
+          let prev = responseData.filter(
+            (item) =>
+              item.gender === `${filters.gender}` &&
+              item.party === `${filters.party}`
+          );
+          setTotal(prev.length);
+          setPoliticianData(prev.slice(indexofFirst, indexofLast));
+          return prev;
+        });
+        setLoading(false);
+      }
     }
   }
 

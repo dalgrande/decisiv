@@ -2,8 +2,21 @@ import React from "react";
 import "./PartySelect.modules.css";
 import usePoliticians from "../../../../hooks/usePoliticians";
 
-function PartySelect() {
+function PartySelect({ party }) {
   const { setCurrentPage, setLoading, setFilters, filters } = usePoliticians();
+
+  React.useEffect(() => {
+    if (party !== "all") {
+      setFilters((prevState) => {
+        return { ...prevState, party: party };
+      });
+    }
+    if (party === "all") {
+      setFilters((prevState) => {
+        return { ...prevState, party: "" };
+      });
+    }
+  }, []);
 
   const handleFilterByPartyChange = (e) => {
     e.preventDefault();
